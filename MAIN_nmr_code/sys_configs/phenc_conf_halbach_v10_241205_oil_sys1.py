@@ -11,7 +11,7 @@ class scan_config():
     
     
     # cpmg settings
-    cpmg_freq = 9.000-39e-3 # 9.035 # 4.355 # 4.158 # 4.164 # in MHz
+    cpmg_freq = 9.000-100e-3 # 9.035 # 4.355 # 4.158 # 4.164 # in MHz
     bstrap_pchg_us = 2000
     lcs_pchg_us = 20
     lcs_dump_us = 100
@@ -30,7 +30,7 @@ class scan_config():
     scanspacing_us = 200000 # normally 100000 for doped water
     samples_per_echo = 4000 # 1000, 600, 200, 100
     echoes_per_scan = 30 # 280 for water, 400 for oil
-    n_iterate =  4
+    n_iterate =  2
     ph_cycl_en = 1 # phase cycle enable
     dconv_fact = 1 # unused for current cpmg code
     echoskip = 1 # unused for current cpmg code

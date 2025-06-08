@@ -93,7 +93,7 @@ phenc_conf.gradx_len_us = 800 # gradient pulse length
 phenc_conf.enc_tao_us = 1000 # the encoding time
         
 # set the maximum current and number of pixels
-npxl = 32 # 64 # number of pixels inside the image_asum
+npxl = 64 # 64 # number of pixels inside the image_asum
 img_size = 1.0 # resize the image (image size of 1.0 is the standard and is used all the time in old experiment). Set to 1.1 for apparatus v05.
 i_z_expand = 1.0 # 0.94 # multiply the z gradient current with this factor
 i_x_expand = 1.0 # multiply the x gradient current with this factor
