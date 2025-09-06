@@ -28,8 +28,8 @@ class scan_config():
     echoshift_us = 15
     echotime_us = 400 # 400 or 70
     scanspacing_us = 200000 # normally 100000 for doped water
-    samples_per_echo = 4000 # 1000, 600, 200, 100
-    echoes_per_scan = 30 # 280 for water, 400 for oil
+    samples_per_echo = 1000 # 1000, 600, 200, 100
+    echoes_per_scan = 500 # 280 for water, 400 for oil
     n_iterate =  2
     ph_cycl_en = 1 # phase cycle enable
     dconv_fact = 1 # unused for current cpmg code
