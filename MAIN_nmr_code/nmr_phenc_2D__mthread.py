@@ -84,7 +84,7 @@ if (not en_live_figure):
 tmeas = time_meas(report_time)
 
 # import default measurement configuration
-from sys_configs.phenc_conf_halbach_v10_241205_oil_sys1 import scan_config
+from sys_configs.phenc_conf_halbach_v10_241205_oil_sysdja import scan_config
 phenc_conf = scan_config()
 
 # modify default parameters
@@ -97,7 +97,7 @@ npxl = 64 # 64 # number of pixels inside the image_asum
 img_size = 1.0 # resize the image (image size of 1.0 is the standard and is used all the time in old experiment). Set to 1.1 for apparatus v05.
 i_z_expand = 1.0 # 0.94 # multiply the z gradient current with this factor
 i_x_expand = 1.0 # multiply the x gradient current with this factor
-imax = (3200/64)*npxl/img_size # maximum current with 3A corresponds to 64 pixels (both polarity will be used)
+imax = 0.5*(3200/64)*npxl/img_size # maximum current with 3A corresponds to 64 pixels (both polarity will be used)
 ilist_x = np.linspace(-imax, imax, npxl)*i_x_expand # create list of current being used
 ilist_z = np.linspace(-imax, imax, npxl)*i_z_expand # create list of current being used
 write_text_overwrite( nmrObj.client_data_folder, 'grad_strength_x.txt', str(ilist_x))

@@ -42,8 +42,8 @@ from sys_configs.phenc_conf_halbach_v10_241205_oil import scan_config
 phenc_conf = scan_config()
 
 # sweep pi/2 pulse length 
-val_center = 25
-val_range = 10
+val_center = 4
+val_range = 2
 val_npts = 11
 val_sw = np.linspace(val_center-0.5*val_range,val_center+0.5*val_range,val_npts)
 
@@ -91,9 +91,14 @@ for i,val_curr in enumerate(val_sw):
     if (i==len(val_sw)-1):
         phenc_conf.en_lcs_dchg = 1 # enable discharging at the last iteration to dump vpc voltage
     
-    print("\t\t\t\texpt: %d/%d ----- pi/2 length = %0.3f us" % (i,len(val_sw)-1,val_curr) )
-    phenc_conf.p90_us = val_curr
-    phenc_conf.p180_us = val_curr*phenc_conf.p180_p90_len_fact
+    print("\t\t\t\texpt: %d/%d ----- plen_base = %0.3f us" % (i,len(val_sw)-1,val_curr) )
+    
+    phenc_conf.p90_pchg_us = val_curr
+    phenc_conf.p90_pchg_refill_us = val_curr*phenc_conf.refill_mult
+    phenc_conf.p180_pchg_us = val_curr*phenc_conf.p180_p90_amp_fact
+    phenc_conf.p180_pchg_refill_us = val_curr*phenc_conf.refill_mult*phenc_conf.p180_p90_amp_fact
+    
+    
     expt_num = i
     # asum_re[i], asum_im[i], _, _, _, _, _, theta[i], _, _= phenc(nmrObj, phenc_conf, expt_num, sav_fig, show_fig)
     asum_re[i], asum_im[i], _, _, _, _, _, theta[i], _, _, _, _ = cpmg(nmrObj, phenc_conf, expt_num, sav_fig, show_fig)

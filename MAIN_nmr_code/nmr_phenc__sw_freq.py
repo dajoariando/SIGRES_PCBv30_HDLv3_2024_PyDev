@@ -42,8 +42,8 @@ from sys_configs.phenc_conf_halbach_v10_241205_oil import scan_config
 phenc_conf = scan_config()
 
 # sweep frequency
-val_center = 8.9
-val_range = 200e-3
+val_center = 9.01
+val_range = 50e-3
 val_npts = 11
 val_sw = np.linspace(val_center-0.5*val_range,val_center+0.5*val_range,val_npts)
 

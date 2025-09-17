@@ -1,9 +1,11 @@
+# sysdja is owned by David Ariando.
+
 class scan_config():
 # this configuration is for:
 # halbach8 v03 that contains 30 turns rx solenoid coil, 2 turn gradient coils for x and z, 4 turns tx coil
 
     # pulse parameters
-    plen_base = 1.0 # 4.40 # the precharging length base. Don't forget to set the corresponding p90_us
+    plen_base = 8.0 # 4.40 # the precharging length base. Don't forget to set the corresponding p90_us
     refill_mult = 4.00 # the refill multiplication to compensate RF loss
     p180_p90_amp_fact = 1.0 # 2.0 # multiplication factor between p90 to p180 length
     p180_p90_len_fact = 1.6 # 
@@ -11,13 +13,13 @@ class scan_config():
     
     
     # cpmg settings
-    cpmg_freq = 9.035 # 4.355 # 4.158 # 4.164 # in MHz
+    cpmg_freq = 9.005-21e-3 # 4.355 # 4.158 # 4.164 # in MHz
     bstrap_pchg_us = 2000
     lcs_pchg_us = 20
     lcs_dump_us = 100
     p90_pchg_us = plen_base
     p90_pchg_refill_us = plen_base*refill_mult
-    p90_us = 22 # 8.00
+    p90_us = 5 # 8.00
     p90_dchg_us = p90_pchg_us+p90_pchg_refill_us # used to be 150
     p90_dtcl = 0.5
     p180_pchg_us = plen_base *p180_p90_amp_fact
@@ -25,17 +27,17 @@ class scan_config():
     p180_us = p90_us*p180_p90_len_fact
     p180_dchg_us = (p180_pchg_us+p180_pchg_refill_us)*non_stdy_state_mult # used to be p90_dchg_us
     p180_dtcl = p90_dtcl
-    echoshift_us = 22
-    echotime_us = 400 # 400 or 70
-    scanspacing_us = 500000 # normally 100000 for doped water
-    samples_per_echo = 2000 # 1000, 600, 200, 100
-    echoes_per_scan = 250 # 280 for water, 400 for oil
-    n_iterate =  100
+    echoshift_us = 6.5
+    echotime_us = 1000 # 400 or 70
+    scanspacing_us = 200000 # normally 100000 for doped water
+    samples_per_echo = 400 # 1000, 600, 200, 100
+    echoes_per_scan = 50 # 280 for water, 400 for oil
+    n_iterate = 4
     ph_cycl_en = 0 # phase cycle enable
     dconv_fact = 1 # unused for current cpmg code
     echoskip = 1 # unused for current cpmg code
     echodrop = 0 # unused for current cpmg code
-    vvarac = -0.35 # -1.87 # set to -1.91V # more negative, more capacitance
+    vvarac = -0.60 # more negative, more capacitance
     # precharging the vpc (done prior to the cpmg, to bump the vpc to high-voltage, typically 75V)
     lcs_vpc_pchg_us = 25
     lcs_recycledump_us = 1000
@@ -49,6 +51,15 @@ class scan_config():
     gradz_volt = 0.1 # the gradient can be positive or negative
     gradx_len_us = 100 # gradient pulse length
     gradx_volt = 0.1 # the gradient can be positive or negative
+    Vgradoffst = 0.002
+    VxA = 2.495+Vgradoffst # null voltage for the gradient
+    VxB = 2.491+Vgradoffst # null voltage for the gradient
+    VxC = 2.524+Vgradoffst # null voltage for the gradient
+    VxD = 2.48+Vgradoffst # null voltage for the gradient
+    VyA = 2.499+Vgradoffst # null voltage for the gradient
+    VyB = 2.495+Vgradoffst # null voltage for the gradient
+    VyC = 2.506+Vgradoffst # null voltage for the gradient
+    VyD = 2.503+Vgradoffst # null voltage for the gradient
     grad_refocus = 1 # put 1 to refocus the gradient
     flip_grad_refocus_sign = 1 # put 1 to flip the gradient refocusing sign
     enc_tao_us = 200 # the encoding time

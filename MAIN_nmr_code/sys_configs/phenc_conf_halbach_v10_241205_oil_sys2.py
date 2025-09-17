@@ -1,3 +1,5 @@
+# sys2 is owned by SignatureResonance and is with Cheng in Connecticut.
+
 class scan_config():
 # this configuration is for:
 # halbach8 v03 that contains 30 turns rx solenoid coil, 2 turn gradient coils for x and z, 4 turns tx coil
